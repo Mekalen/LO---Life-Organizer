@@ -16,10 +16,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class GoalsFragment : Fragment() {
     private var _binding: FragmentGoalsBinding? = null
     private val binding get() = _binding!!
-
+    
     private lateinit var dataManager: DataManager
     private lateinit var goalsAdapter: GoalsAdapter
-
+    
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
