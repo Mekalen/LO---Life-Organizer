@@ -44,6 +44,9 @@ class TasksFragment : Fragment() {
         setupRecyclerView()
         setupClickListeners()
         loadTasks()
+        
+        // Update toolbar title
+        (requireActivity() as MainActivity).updateToolbarTitle("Tasks")
     }
     
     private fun setupRecyclerView() {
@@ -55,7 +58,8 @@ class TasksFragment : Fragment() {
             onTaskComplete = { task, isCompleted ->
                 val updatedTask = task.copy(isCompleted = isCompleted)
                 dataManager.updateTask(updatedTask)
-                loadTasks()
+                // Defer reloading to avoid notifying during layout
+                binding.recyclerViewTasks.post { loadTasks() }
             }
         )
         
@@ -97,7 +101,8 @@ class TasksFragment : Fragment() {
             Task.Priority.values().map { it.name.lowercase().replaceFirstChar { char -> char.uppercase() } }
         )
         priorityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        dialogBinding.findViewById<Spinner>(R.id.spinnerPriority).adapter = priorityAdapter
+        val prioritySpinner = dialogBinding.findViewById<Spinner>(R.id.spinnerPriority)
+        prioritySpinner.adapter = priorityAdapter
         
         // Setup category spinner
         val categoryAdapter = ArrayAdapter(
@@ -115,8 +120,8 @@ class TasksFragment : Fragment() {
             .setPositiveButton("Add") { _, _ ->
                 val title = dialogBinding.findViewById<EditText>(R.id.editTextTitle).text.toString()
                 val description = dialogBinding.findViewById<EditText>(R.id.editTextDescription).text.toString()
-                val priority = Task.Priority.values()[dialogBinding.findViewById<Spinner>(R.id.spinnerPriority).selectedItemPosition]
-                val category = Task.Category.values()[dialogBinding.findViewById<Spinner>(R.id.spinnerCategory).selectedItemPosition]
+                val priority = Task.Priority.values()[prioritySpinner.selectedItemPosition]
+                val category = Task.Category.values()[categorySpinner.selectedItemPosition]
                 
                 if (title.isNotEmpty()) {
                     val task = Task(
@@ -178,7 +183,7 @@ class TasksFragment : Fragment() {
                         category = category
                     )
                     dataManager.updateTask(updatedTask)
-                    loadTasks()
+                    binding.recyclerViewTasks.post { loadTasks() }
                 }
             }
             .setNegativeButton("Cancel", null)
@@ -194,7 +199,7 @@ class TasksFragment : Fragment() {
             .setMessage("Are you sure you want to delete '${task.title}'?")
             .setPositiveButton("Delete") { _, _ ->
                 dataManager.deleteTask(task.id)
-                loadTasks()
+                binding.recyclerViewTasks.post { loadTasks() }
             }
             .setNegativeButton("Cancel", null)
             .show()

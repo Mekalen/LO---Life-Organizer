@@ -1,5 +1,6 @@
 package com.example.app1.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -13,8 +14,13 @@ class HabitsAdapter(
 ) : RecyclerView.Adapter<HabitsAdapter.HabitViewHolder>() {
     
     fun updateHabits(newHabits: List<Habit>) {
-        habits = newHabits
-        notifyDataSetChanged()
+        try {
+            Log.d("HabitsAdapter", "Updating habits: ${newHabits.size} items")
+            habits = newHabits
+            notifyDataSetChanged()
+        } catch (e: Exception) {
+            Log.e("HabitsAdapter", "Error updating habits", e)
+        }
     }
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {
@@ -48,9 +54,9 @@ class HabitsAdapter(
                 onHabitClick(habit)
             }
             
-            // Handle track button
+            // Handle track button (defer to next loop to avoid notify during layout)
             binding.buttonTrackHabit.setOnClickListener {
-                onHabitTrack(habit)
+                binding.root.post { onHabitTrack(habit) }
             }
         }
     }

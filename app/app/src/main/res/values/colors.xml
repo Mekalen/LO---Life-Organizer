@@ -4,57 +4,57 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     
-    <!-- Modern Welcoming Color Palette -->
-    <color name="primary">#FF4A90E2</color>              <!-- Friendly blue -->
-    <color name="primary_variant">#FF2E5BBA</color>        <!-- Deeper blue -->
-    <color name="secondary">#FF50C878</color>             <!-- Fresh green -->
-    <color name="secondary_variant">#FF3FA463</color>      <!-- Deeper green -->
+    <!-- App Palette (Always Dark: Black + Red accents) -->
+    <color name="primary">#FFB91C1C</color>              <!-- Deep Red primary -->
+    <color name="primary_variant">#FF7F1D1D</color>        <!-- Darker Red -->
+    <color name="secondary">#FF111111</color>             <!-- Near Black -->
+    <color name="secondary_variant">#FF1A1A1A</color>      <!-- Deeper near-black -->
     
-    <!-- Background Colors -->
-    <color name="background">#FFF8FAFC</color>            <!-- Very light blue-gray -->
-    <color name="surface">#FFFFFFFF</color>
-    <color name="surface_variant">#FFF1F5F9</color>        <!-- Light gray surface -->
+    <!-- Background & Surfaces (light theme compatible) -->
+    <color name="background">#FFFFFFFF</color>
+    <color name="surface">#FFF5F5F5</color>
+    <color name="surface_variant">#FFE5E5E5</color>
     
     <!-- Accent Colors -->
-    <color name="accent_warm">#FFFF8A65</color>           <!-- Warm coral -->
-    <color name="accent_purple">#FF9C88FF</color>         <!-- Soft purple -->
-    <color name="accent_yellow">#FFFFD93D</color>         <!-- Cheerful yellow -->
+    <color name="accent_warm">#FFFF8A65</color>
+    <color name="accent_purple">#FF9C88FF</color>
+    <color name="accent_yellow">#FFFFD93D</color>
     
     <!-- Status Colors -->
-    <color name="success">#FF22C55E</color>              <!-- Success green -->
-    <color name="warning">#FFF59E0B</color>              <!-- Warning amber -->
-    <color name="error">#FFEF4444</color>                <!-- Friendly red -->
-    <color name="info">#FF3B82F6</color>                 <!-- Info blue -->
+    <color name="success">#FF22C55E</color>
+    <color name="warning">#FFF59E0B</color>
+    <color name="error">#FFEF4444</color>
+    <color name="info">#FF38BDF8</color>
     
-    <!-- Text Colors -->
-    <color name="text_primary">#FF1E293B</color>          <!-- Dark blue-gray -->
-    <color name="text_secondary">#FF64748B</color>        <!-- Medium gray -->
-    <color name="text_tertiary">#FF94A3B8</color>         <!-- Light gray -->
+    <!-- Text Colors (light theme compatible) -->
+    <color name="text_primary">#FF1F2937</color>
+    <color name="text_secondary">#FF6B7280</color>
+    <color name="text_tertiary">#FF9CA3AF</color>
     <color name="text_on_primary">#FFFFFFFF</color>
     <color name="text_on_secondary">#FFFFFFFF</color>
     
     <!-- Legacy Material Design Colors (for compatibility) -->
     <color name="on_primary">#FFFFFFFF</color>
     <color name="on_secondary">#FFFFFFFF</color>
-    <color name="on_background">#FF1E293B</color>
-    <color name="on_surface">#FF1E293B</color>
+    <color name="on_background">#FF1F2937</color>
+    <color name="on_surface">#FF1F2937</color>
     <color name="on_error">#FFFFFFFF</color>
     
     <!-- Category Colors -->
-    <color name="category_work">#FF6366F1</color>         <!-- Indigo -->
-    <color name="category_personal">#FFEC4899</color>      <!-- Pink -->
-    <color name="category_health">#FF10B981</color>       <!-- Emerald -->
-    <color name="category_learning">#FF8B5CF6</color>      <!-- Purple -->
+    <color name="category_work">#FFB91C1C</color>         <!-- Use red accent family -->
+    <color name="category_personal">#FFEF4444</color>
+    <color name="category_health">#FF16A34A</color>
+    <color name="category_learning">#FFB91C1C</color>
     
     <!-- Priority Colors -->
-    <color name="priority_high">#FFEF4444</color>         <!-- Red -->
-    <color name="priority_medium">#FFF59E0B</color>       <!-- Amber -->
-    <color name="priority_low">#FF22C55E</color>          <!-- Green -->
+    <color name="priority_high">#FFB91C1C</color>
+    <color name="priority_medium">#FFB45309</color>
+    <color name="priority_low">#FF15803D</color>
     
     <!-- Card and Component Colors -->
     <color name="card_background">#FFFFFFFF</color>
-    <color name="card_stroke">#FFE2E8F0</color>
-    <color name="divider">#FFE2E8F0</color>
-    <color name="shimmer_base">#FFF1F5F9</color>
-    <color name="shimmer_highlight">#FFFFFFFF</color>
+    <color name="card_stroke">#FFE5E5E5</color>
+    <color name="divider">#FF2B2B2B</color>
+    <color name="shimmer_base">#FF1E1E1E</color>
+    <color name="shimmer_highlight">#FF2A2A2A</color>
 </resources>

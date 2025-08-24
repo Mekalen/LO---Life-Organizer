@@ -37,6 +37,9 @@ class GoalsFragment : Fragment() {
         setupRecyclerView()
         setupClickListeners()
         loadGoals()
+        
+        // Update toolbar title
+        (requireActivity() as MainActivity).updateToolbarTitle("Goals")
     }
     
     private fun setupRecyclerView() {
@@ -164,6 +167,11 @@ class GoalsFragment : Fragment() {
         } catch (e: Exception) {
             0
         }
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        loadGoals()
     }
     
     override fun onDestroyView() {

@@ -1,7 +1,9 @@
 package com.example.app1.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app1.databinding.ItemTaskCardBinding
 import com.example.app1.models.Task
@@ -13,8 +15,16 @@ class TasksAdapter(
 ) : RecyclerView.Adapter<TasksAdapter.TaskViewHolder>() {
     
     fun updateTasks(newTasks: List<Task>) {
-        tasks = newTasks
-        notifyDataSetChanged()
+        try {
+            Log.d("TasksAdapter", "Updating tasks: ${newTasks.size} items")
+            val diffResult = DiffUtil.calculateDiff(TasksDiffCallback(tasks, newTasks))
+            tasks = newTasks
+            diffResult.dispatchUpdatesTo(this)
+        } catch (e: Exception) {
+            Log.e("TasksAdapter", "Error updating tasks, falling back to notifyDataSetChanged", e)
+            tasks = newTasks
+            notifyDataSetChanged()
+        }
     }
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -51,7 +61,8 @@ class TasksAdapter(
             // Set category
             binding.textTaskCategory.text = task.category.name.lowercase().replaceFirstChar { it.uppercase() }
             
-            // Set completion status
+            // Avoid triggering listener while updating checked state
+            binding.checkboxTask.setOnCheckedChangeListener(null)
             binding.checkboxTask.isChecked = task.isCompleted
             
             // Handle click
@@ -60,8 +71,26 @@ class TasksAdapter(
             }
             
             binding.checkboxTask.setOnCheckedChangeListener { _, isChecked ->
-                onTaskComplete?.invoke(task, isChecked)
+                // Defer to next loop to avoid notifyDataSetChanged during layout
+                binding.root.post {
+                    onTaskComplete?.invoke(task, isChecked)
+                }
             }
         }
+    }
+}
+
+class TasksDiffCallback(private val oldList: List<Task>, private val newList: List<Task>) : DiffUtil.Callback() {
+    
+    override fun getOldListSize(): Int = oldList.size
+    
+    override fun getNewListSize(): Int = newList.size
+    
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition].id == newList[newItemPosition].id
+    }
+    
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition] == newList[newItemPosition]
     }
 }

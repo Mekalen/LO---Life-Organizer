@@ -1,11 +1,12 @@
 package com.example.app1.adapters
 
+import android.content.res.ColorStateList
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app1.databinding.ItemGoalCardBinding
 import com.example.app1.models.Goal
-import android.content.res.ColorStateList
 
 class GoalsAdapter(
     private var goals: List<Goal>,
@@ -13,8 +14,13 @@ class GoalsAdapter(
 ) : RecyclerView.Adapter<GoalsAdapter.GoalViewHolder>() {
     
     fun updateGoals(newGoals: List<Goal>) {
-        goals = newGoals
-        notifyDataSetChanged()
+        try {
+            Log.d("GoalsAdapter", "Updating goals: ${newGoals.size} items")
+            goals = newGoals
+            notifyDataSetChanged()
+        } catch (e: Exception) {
+            Log.e("GoalsAdapter", "Error updating goals", e)
+        }
     }
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoalViewHolder {

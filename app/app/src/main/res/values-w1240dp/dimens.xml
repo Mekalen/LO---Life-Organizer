@@ -1,3 +1,15 @@
 <resources>
-    <dimen name="fab_margin">200dp</dimen>
+    <!-- Very wide screen dimensions (1240dp and wider) -->
+    <dimen name="spacing_medium">32dp</dimen>
+    <dimen name="spacing_large">48dp</dimen>
+    <dimen name="spacing_xlarge">64dp</dimen>
+    
+    <dimen name="text_size_large">28sp</dimen>
+    <dimen name="text_size_xlarge">32sp</dimen>
+    <dimen name="text_size_xxlarge">36sp</dimen>
+    
+    <dimen name="card_corner_radius">24dp</dimen>
+    <dimen name="card_corner_radius_large">28dp</dimen>
+    
+    <dimen name="fab_margin_large">40dp</dimen>
 </resources>

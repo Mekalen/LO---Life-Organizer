@@ -3,23 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_marginBottom="80dp">
 
         <!-- Header -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/tasks_title"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:layout_marginBottom="24dp"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textColor="@color/text_primary" />
 
         <!-- Empty State -->
         <LinearLayout
@@ -29,30 +32,41 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:visibility="gone">
+            android:visibility="gone"
+            android:padding="32dp">
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@android:drawable/ic_menu_edit"
                 android:alpha="0.5"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="24dp"
+                android:contentDescription="@string/tasks_empty_state_icon"
+                app:tint="@color/text_tertiary" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/no_tasks"
-                android:textSize="18sp"
-                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="20sp"
+                android:textColor="@color/text_secondary"
                 android:gravity="center"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="24dp"
+                android:lineSpacingExtra="4dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonAddTask"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Your First Task"
-                app:icon="@android:drawable/ic_input_add" />
+                android:textSize="16sp"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                app:icon="@android:drawable/ic_input_add"
+                app:iconSize="24dp"
+                style="@style/Button.App1.Primary" />
 
         </LinearLayout>
 
@@ -65,6 +79,8 @@
             android:clipToPadding="false"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
             tools:listitem="@layout/item_task_card" />
 
     </LinearLayout>
@@ -75,8 +91,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_margin="55dp"
         android:src="@android:drawable/ic_input_add"
-        app:fabSize="normal" />
+        android:contentDescription="Add Task"
+        app:fabSize="normal"
+        app:tint="@color/text_on_primary"
+        app:backgroundTint="@color/primary"
+        app:elevation="8dp"
+        app:borderWidth="0dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

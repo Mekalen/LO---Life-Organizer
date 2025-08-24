@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Theme Palette: Black + Red -->
+    <color name="primary">#FFB91C1C</color>              <!-- Deep Red for primary accents -->
+    <color name="primary_variant">#FF7F1D1D</color>        <!-- Darker Red -->
+    <color name="secondary">#FF111111</color>             <!-- Near Black secondary -->
+    <color name="secondary_variant">#FF1A1A1A</color>      <!-- Deeper near-black -->
+
+    <!-- Background Colors (dark) -->
+    <color name="background">#FF0B0B0B</color>            <!-- Almost pure black -->
+    <color name="surface">#FF121212</color>
+    <color name="surface_variant">#FF1E1E1E</color>
+
+    <!-- Text Colors (dark) -->
+    <color name="text_primary">#FFF5F5F5</color>
+    <color name="text_secondary">#FFCCCCCC</color>
+    <color name="text_tertiary">#FF9CA3AF</color>
+    <color name="text_on_primary">#FFFFFFFF</color>
+    <color name="text_on_secondary">#FFFFFFFF</color>
+
+    <!-- Card and Component Colors -->
+    <color name="card_background">#FF171717</color>
+    <color name="card_stroke">#FF2B2B2B</color>
+    <color name="divider">#FF2B2B2B</color>
+
+    <!-- Status Colors -->
+    <color name="success">#FF22C55E</color>
+    <color name="warning">#FFF59E0B</color>
+    <color name="error">#FFEF4444</color>
+    <color name="info">#FF38BDF8</color>
+</resources>

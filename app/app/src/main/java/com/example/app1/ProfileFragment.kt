@@ -33,11 +33,15 @@ class ProfileFragment : Fragment() {
         dataManager = DataManager(requireContext())
         setupClickListeners()
         loadProfileData()
+        
+        // Update toolbar title
+        (requireActivity() as MainActivity).updateToolbarTitle("Profile")
     }
     
     private fun setupClickListeners() {
         binding.buttonExportData.setOnClickListener {
             // TODO: Implement data export functionality
+            showExportDataDialog()
         }
         
         binding.buttonClearData.setOnClickListener {
@@ -91,6 +95,14 @@ class ProfileFragment : Fragment() {
         binding.textJoinDate.text = dateFormat.format(Date())
     }
     
+    private fun showExportDataDialog() {
+        androidx.appcompat.app.AlertDialog.Builder(requireContext())
+            .setTitle("Export Data")
+            .setMessage("Data export functionality will be available in a future update. For now, your data is safely stored locally on your device.")
+            .setPositiveButton("OK", null)
+            .show()
+    }
+    
     private fun showClearDataConfirmation() {
         androidx.appcompat.app.AlertDialog.Builder(requireContext())
             .setTitle("Clear All Data")
@@ -114,8 +126,8 @@ class ProfileFragment : Fragment() {
     
     private fun showAboutDialog() {
         androidx.appcompat.app.AlertDialog.Builder(requireContext())
-            .setTitle("About App1")
-            .setMessage("App1 - Personal Productivity App\n\nVersion: 1.0\n\nA simple and effective app to help you manage tasks, build habits, and achieve your goals.\n\nFeatures:\n• Task Management\n• Habit Tracking\n• Goal Setting\n• Mood Tracking\n• Local Data Storage")
+            .setTitle("About Smart Life Organizer")
+            .setMessage("Smart Life Organizer - Personal Productivity App\n\nVersion: 1.0\n\nA simple and effective app to help you manage tasks, build habits, and achieve your goals.\n\nFeatures:\n• Task Management\n• Habit Tracking\n• Goal Setting\n• Mood Tracking\n• Local Data Storage\n• Beautiful & Responsive UI")
             .setPositiveButton("OK", null)
             .show()
     }

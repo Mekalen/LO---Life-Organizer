@@ -2,10 +2,12 @@ package com.example.app1.data
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import com.example.app1.models.Goal
 import com.example.app1.models.Habit
 import com.example.app1.models.Task
 import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
 import java.util.*
 
@@ -23,14 +25,29 @@ class DataManager(context: Context) {
     
     // Tasks
     fun saveTasks(tasks: List<Task>) {
-        val json = gson.toJson(tasks)
-        sharedPreferences.edit().putString(KEY_TASKS, json).apply()
+        try {
+            val json = gson.toJson(tasks)
+            sharedPreferences.edit().putString(KEY_TASKS, json).apply()
+            Log.d("DataManager", "Tasks saved successfully: ${tasks.size} items")
+        } catch (e: Exception) {
+            Log.e("DataManager", "Error saving tasks", e)
+        }
     }
     
     fun getTasks(): List<Task> {
-        val json = sharedPreferences.getString(KEY_TASKS, "[]")
-        val type = object : TypeToken<List<Task>>() {}.type
-        return gson.fromJson(json, type) ?: emptyList()
+        return try {
+            val json = sharedPreferences.getString(KEY_TASKS, "[]")
+            val type = object : TypeToken<List<Task>>() {}.type
+            val tasks = gson.fromJson<List<Task>>(json, type) ?: emptyList()
+            Log.d("DataManager", "Tasks loaded successfully: ${tasks.size} items")
+            tasks
+        } catch (e: JsonSyntaxException) {
+            Log.e("DataManager", "Error parsing tasks JSON, returning empty list", e)
+            emptyList()
+        } catch (e: Exception) {
+            Log.e("DataManager", "Error loading tasks, returning empty list", e)
+            emptyList()
+        }
     }
     
     fun addTask(task: Task) {
@@ -57,14 +74,29 @@ class DataManager(context: Context) {
     
     // Habits
     fun saveHabits(habits: List<Habit>) {
-        val json = gson.toJson(habits)
-        sharedPreferences.edit().putString(KEY_HABITS, json).apply()
+        try {
+            val json = gson.toJson(habits)
+            sharedPreferences.edit().putString(KEY_HABITS, json).apply()
+            Log.d("DataManager", "Habits saved successfully: ${habits.size} items")
+        } catch (e: Exception) {
+            Log.e("DataManager", "Error saving habits", e)
+        }
     }
     
     fun getHabits(): List<Habit> {
-        val json = sharedPreferences.getString(KEY_HABITS, "[]")
-        val type = object : TypeToken<List<Habit>>() {}.type
-        return gson.fromJson(json, type) ?: emptyList()
+        return try {
+            val json = sharedPreferences.getString(KEY_HABITS, "[]")
+            val type = object : TypeToken<List<Habit>>() {}.type
+            val habits = gson.fromJson<List<Habit>>(json, type) ?: emptyList()
+            Log.d("DataManager", "Habits loaded successfully: ${habits.size} items")
+            habits
+        } catch (e: JsonSyntaxException) {
+            Log.e("DataManager", "Error parsing habits JSON, returning empty list", e)
+            emptyList()
+        } catch (e: Exception) {
+            Log.e("DataManager", "Error loading habits, returning empty list", e)
+            emptyList()
+        }
     }
     
     fun addHabit(habit: Habit) {
@@ -121,14 +153,29 @@ class DataManager(context: Context) {
     
     // Goals
     fun saveGoals(goals: List<Goal>) {
-        val json = gson.toJson(goals)
-        sharedPreferences.edit().putString(KEY_GOALS, json).apply()
+        try {
+            val json = gson.toJson(goals)
+            sharedPreferences.edit().putString(KEY_GOALS, json).apply()
+            Log.d("DataManager", "Goals saved successfully: ${goals.size} items")
+        } catch (e: Exception) {
+            Log.e("DataManager", "Error saving goals", e)
+        }
     }
     
     fun getGoals(): List<Goal> {
-        val json = sharedPreferences.getString(KEY_GOALS, "[]")
-        val type = object : TypeToken<List<Goal>>() {}.type
-        return gson.fromJson(json, type) ?: emptyList()
+        return try {
+            val json = sharedPreferences.getString(KEY_GOALS, "[]")
+            val type = object : TypeToken<List<Goal>>() {}.type
+            val goals = gson.fromJson<List<Goal>>(json, type) ?: emptyList()
+            Log.d("DataManager", "Goals loaded successfully: ${goals.size} items")
+            goals
+        } catch (e: JsonSyntaxException) {
+            Log.e("DataManager", "Error parsing goals JSON, returning empty list", e)
+            emptyList()
+        } catch (e: Exception) {
+            Log.e("DataManager", "Error loading goals, returning empty list", e)
+            emptyList()
+        }
     }
     
     fun addGoal(goal: Goal) {
@@ -155,20 +202,36 @@ class DataManager(context: Context) {
     
     // Mood tracking
     fun saveMood(mood: String) {
-        sharedPreferences.edit()
-            .putString(KEY_MOOD, mood)
-            .putString(KEY_MOOD_DATE, gson.toJson(Date()))
-            .apply()
+        try {
+            sharedPreferences.edit()
+                .putString(KEY_MOOD, mood)
+                .putString(KEY_MOOD_DATE, gson.toJson(Date()))
+                .apply()
+            Log.d("DataManager", "Mood saved successfully: $mood")
+        } catch (e: Exception) {
+            Log.e("DataManager", "Error saving mood", e)
+        }
     }
     
     fun getCurrentMood(): Pair<String, Date>? {
-        val mood = sharedPreferences.getString(KEY_MOOD, null)
-        val dateJson = sharedPreferences.getString(KEY_MOOD_DATE, null)
-        
-        if (mood != null && dateJson != null) {
-            val date = gson.fromJson(dateJson, Date::class.java)
-            return Pair(mood, date)
+        return try {
+            val mood = sharedPreferences.getString(KEY_MOOD, null)
+            val dateJson = sharedPreferences.getString(KEY_MOOD_DATE, null)
+            
+            if (mood != null && dateJson != null) {
+                val date = gson.fromJson(dateJson, Date::class.java)
+                Log.d("DataManager", "Mood loaded successfully: $mood")
+                Pair(mood, date)
+            } else {
+                Log.d("DataManager", "No mood data found")
+                null
+            }
+        } catch (e: JsonSyntaxException) {
+            Log.e("DataManager", "Error parsing mood date JSON", e)
+            null
+        } catch (e: Exception) {
+            Log.e("DataManager", "Error loading mood", e)
+            null
         }
-        return null
     }
 }

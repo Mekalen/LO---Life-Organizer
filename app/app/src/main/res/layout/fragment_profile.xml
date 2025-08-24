@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:background="@color/background"
+    android:fillViewport="true"
+    android:clipToPadding="false"
+    android:paddingBottom="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,73 +20,84 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/profile_title"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:layout_marginBottom="24dp"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textColor="@color/text_primary" />
 
         <!-- Profile Info Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardElevation="4dp"
-            app:cardCornerRadius="12dp">
+            android:layout_marginBottom="24dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/card_background"
+            app:strokeColor="@color/card_stroke"
+            app:strokeWidth="1dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="24dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/profile_title"
-                    android:textSize="18sp"
+                    android:text="Profile Information"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    android:layout_marginBottom="16dp" />
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/text_primary" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
+                    android:layout_marginBottom="12dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/join_date"
-                        android:textStyle="bold"
-                        android:layout_marginEnd="8dp" />
+                        android:textSize="16sp"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginEnd="16dp" />
 
                     <TextView
                         android:id="@+id/textJoinDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jan 01, 2024" />
-
+                        android:text="Jan 01, 2024"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
+                    android:layout_marginBottom="12dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/current_mood"
-                        android:textStyle="bold"
-                        android:layout_marginEnd="8dp" />
+                        android:textSize="16sp"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginEnd="16dp" />
 
                     <TextView
                         android:id="@+id/textCurrentMood"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Not set" />
-
+                        android:text="Happy"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -95,19 +109,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/mood_date"
-                        android:textStyle="bold"
-                        android:layout_marginEnd="8dp" />
+                        android:textSize="16sp"
+                        android:textColor="@color/text_secondary"
+                        android:layout_marginEnd="16dp" />
 
                     <TextView
                         android:id="@+id/textMoodDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="N/A" />
-
+                        android:text="Jan 01, 2024"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary" />
                 </LinearLayout>
-
             </LinearLayout>
-
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Statistics Cards Row -->
@@ -115,7 +130,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="24dp"
+            android:baselineAligned="false">
 
             <!-- Tasks Stats Card -->
             <com.google.android.material.card.MaterialCardView
@@ -124,7 +140,10 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
                 app:cardElevation="4dp"
-                app:cardCornerRadius="12dp">
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:strokeColor="@color/card_stroke"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -138,7 +157,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/tasks"
                         android:textSize="14sp"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        android:textColor="@color/text_secondary" />
 
                     <TextView
                         android:id="@+id/textTotalTasks"
@@ -147,7 +166,8 @@
                         android:text="0"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:layout_marginTop="8dp" />
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/text_primary" />
 
                     <TextView
                         android:id="@+id/textCompletedTasks"
@@ -155,7 +175,8 @@
                         android:layout_height="wrap_content"
                         android:text="0 completed"
                         android:textSize="12sp"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        android:textColor="@color/text_tertiary"
+                        android:layout_marginTop="4dp" />
 
                     <TextView
                         android:id="@+id/textCompletionRate"
@@ -164,10 +185,9 @@
                         android:text="0%"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="?android:attr/colorPrimary" />
-
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/success" />
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
 
             <!-- Habits Stats Card -->
@@ -178,7 +198,10 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
                 app:cardElevation="4dp"
-                app:cardCornerRadius="12dp">
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:strokeColor="@color/card_stroke"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -192,7 +215,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/habits"
                         android:textSize="14sp"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        android:textColor="@color/text_secondary" />
 
                     <TextView
                         android:id="@+id/textTotalHabits"
@@ -201,14 +224,16 @@
                         android:text="0"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:layout_marginTop="8dp" />
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/text_primary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="active"
+                        android:text="@string/active"
                         android:textSize="12sp"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        android:textColor="@color/text_tertiary"
+                        android:layout_marginTop="4dp" />
 
                     <TextView
                         android:id="@+id/textAverageStreak"
@@ -217,10 +242,9 @@
                         android:text="0 days"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="?android:attr/colorPrimary" />
-
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/secondary" />
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
 
             <!-- Goals Stats Card -->
@@ -230,7 +254,10 @@
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
                 app:cardElevation="4dp"
-                app:cardCornerRadius="12dp">
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:strokeColor="@color/card_stroke"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -244,7 +271,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/goals"
                         android:textSize="14sp"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        android:textColor="@color/text_secondary" />
 
                     <TextView
                         android:id="@+id/textTotalGoals"
@@ -253,14 +280,16 @@
                         android:text="0"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:layout_marginTop="8dp" />
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/text_primary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="active"
+                        android:text="in progress"
                         android:textSize="12sp"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        android:textColor="@color/text_tertiary"
+                        android:layout_marginTop="4dp" />
 
                     <TextView
                         android:id="@+id/textAverageProgress"
@@ -269,51 +298,57 @@
                         android:text="0%"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="?android:attr/colorPrimary" />
-
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/accent_purple" />
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
-
         </LinearLayout>
 
-        <!-- Settings Section -->
-        <TextView
+        <!-- Action Buttons -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/settings"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="16dp" />
+            android:orientation="vertical"
+            android:layout_marginBottom="24dp">
 
-        <!-- Settings Buttons -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonExportData"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/export_data"
-            android:layout_marginBottom="8dp"
-            app:icon="@android:drawable/ic_menu_upload"
-            style="@style/Widget.Material3.Button.OutlinedButton" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonExportData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/export_data"
+                android:textSize="16sp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                app:icon="@android:drawable/ic_menu_upload"
+                app:iconSize="24dp"
+                style="@style/Button.App1.Secondary"
+                android:layout_marginBottom="12dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonClearData"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/clear_data"
-            android:layout_marginBottom="8dp"
-            app:icon="@android:drawable/ic_menu_delete"
-            style="@style/Widget.Material3.Button.OutlinedButton" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonClearData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/clear_data"
+                android:textSize="16sp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                app:icon="@android:drawable/ic_menu_delete"
+                app:iconSize="24dp"
+                style="@style/Button.App1.Secondary"
+                android:layout_marginBottom="12dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonAbout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/about"
-            android:layout_marginBottom="8dp"
-            app:icon="@android:drawable/ic_menu_info_details"
-            style="@style/Widget.Material3.Button.OutlinedButton" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonAbout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about"
+                android:textSize="16sp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                app:icon="@android:drawable/ic_menu_info_details"
+                app:iconSize="24dp"
+                style="@style/Button.App1.Primary" />
+        </LinearLayout>
 
     </LinearLayout>
-
 </ScrollView>

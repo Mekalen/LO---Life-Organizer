@@ -39,6 +39,9 @@ class HabitsFragment : Fragment() {
         setupRecyclerView()
         setupClickListeners()
         loadHabits()
+        
+        // Update toolbar title
+        (requireActivity() as MainActivity).updateToolbarTitle("Habits")
     }
     
     private fun setupRecyclerView() {
@@ -91,14 +94,15 @@ class HabitsFragment : Fragment() {
             Habit.Frequency.values().map { it.name.lowercase().replaceFirstChar { char -> char.uppercase() } }
         )
         frequencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        dialogBinding.findViewById<Spinner>(R.id.spinnerFrequency).adapter = frequencyAdapter
+        val frequencySpinner = dialogBinding.findViewById<Spinner>(R.id.spinnerFrequency)
+        frequencySpinner.adapter = frequencyAdapter
         
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Add New Habit")
             .setView(dialogBinding)
             .setPositiveButton("Add") { _, _ ->
                 val name = dialogBinding.findViewById<EditText>(R.id.editTextHabitName).text.toString()
-                val frequency = Habit.Frequency.values()[dialogBinding.findViewById<Spinner>(R.id.spinnerFrequency).selectedItemPosition]
+                val frequency = Habit.Frequency.values()[frequencySpinner.selectedItemPosition]
                 
                 if (name.isNotEmpty()) {
                     val habit = Habit(
@@ -163,6 +167,11 @@ class HabitsFragment : Fragment() {
             }
             .setNegativeButton("Cancel", null)
             .show()
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        loadHabits()
     }
     
     override fun onDestroyView() {
