@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Core Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Modern Welcoming Color Palette -->
+    <color name="primary">#FF4A90E2</color>              <!-- Friendly blue -->
+    <color name="primary_variant">#FF2E5BBA</color>        <!-- Deeper blue -->
+    <color name="secondary">#FF50C878</color>             <!-- Fresh green -->
+    <color name="secondary_variant">#FF3FA463</color>      <!-- Deeper green -->
+    
+    <!-- Background Colors -->
+    <color name="background">#FFF8FAFC</color>            <!-- Very light blue-gray -->
+    <color name="surface">#FFFFFFFF</color>
+    <color name="surface_variant">#FFF1F5F9</color>        <!-- Light gray surface -->
+    
+    <!-- Accent Colors -->
+    <color name="accent_warm">#FFFF8A65</color>           <!-- Warm coral -->
+    <color name="accent_purple">#FF9C88FF</color>         <!-- Soft purple -->
+    <color name="accent_yellow">#FFFFD93D</color>         <!-- Cheerful yellow -->
+    
+    <!-- Status Colors -->
+    <color name="success">#FF22C55E</color>              <!-- Success green -->
+    <color name="warning">#FFF59E0B</color>              <!-- Warning amber -->
+    <color name="error">#FFEF4444</color>                <!-- Friendly red -->
+    <color name="info">#FF3B82F6</color>                 <!-- Info blue -->
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#FF1E293B</color>          <!-- Dark blue-gray -->
+    <color name="text_secondary">#FF64748B</color>        <!-- Medium gray -->
+    <color name="text_tertiary">#FF94A3B8</color>         <!-- Light gray -->
+    <color name="text_on_primary">#FFFFFFFF</color>
+    <color name="text_on_secondary">#FFFFFFFF</color>
+    
+    <!-- Legacy Material Design Colors (for compatibility) -->
+    <color name="on_primary">#FFFFFFFF</color>
+    <color name="on_secondary">#FFFFFFFF</color>
+    <color name="on_background">#FF1E293B</color>
+    <color name="on_surface">#FF1E293B</color>
+    <color name="on_error">#FFFFFFFF</color>
+    
+    <!-- Category Colors -->
+    <color name="category_work">#FF6366F1</color>         <!-- Indigo -->
+    <color name="category_personal">#FFEC4899</color>      <!-- Pink -->
+    <color name="category_health">#FF10B981</color>       <!-- Emerald -->
+    <color name="category_learning">#FF8B5CF6</color>      <!-- Purple -->
+    
+    <!-- Priority Colors -->
+    <color name="priority_high">#FFEF4444</color>         <!-- Red -->
+    <color name="priority_medium">#FFF59E0B</color>       <!-- Amber -->
+    <color name="priority_low">#FF22C55E</color>          <!-- Green -->
+    
+    <!-- Card and Component Colors -->
+    <color name="card_background">#FFFFFFFF</color>
+    <color name="card_stroke">#FFE2E8F0</color>
+    <color name="divider">#FFE2E8F0</color>
+    <color name="shimmer_base">#FFF1F5F9</color>
+    <color name="shimmer_highlight">#FFFFFFFF</color>
+</resources>
