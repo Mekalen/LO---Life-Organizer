@@ -1,4 +1,4 @@
-# Smart Life Organizer 📱✨
+# Life Organizer 📱✨
 
 A creative and helpful Android app designed to make everyday life more organized, productive, and fulfilling. This app helps users manage tasks, build positive habits, track life goals, and maintain a balanced lifestyle.
 
