@@ -4,15 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import com.example.app1.data.DataManager
 import com.example.app1.databinding.FragmentGraphsBinding
 
 class GraphsFragment : Fragment() {
     private var _binding: FragmentGraphsBinding? = null
     private val binding get() = _binding!!
-
+    
+    private lateinit var dataManager: DataManager
+    
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -21,30 +22,47 @@ class GraphsFragment : Fragment() {
         _binding = FragmentGraphsBinding.inflate(inflater, container, false)
         return binding.root
     }
-
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        (requireActivity() as MainActivity).updateToolbarTitle(getString(R.string.nav_graphs))
-
-        val adapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_spinner_item,
-            listOf(getString(R.string.chart_pie), getString(R.string.chart_bar), getString(R.string.chart_line))
-        )
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinnerChartType.adapter = adapter
-
-        binding.buttonGenerate.setOnClickListener {
-            val selection = binding.spinnerChartType.selectedItemPosition
-            when (selection) {
-                0 -> binding.textPlaceholder.text = "Pie chart preview here"
-                1 -> binding.textPlaceholder.text = "Bar chart preview here"
-                2 -> binding.textPlaceholder.text = "Line chart preview here"
-            }
+        
+        dataManager = DataManager(requireContext())
+        setupViews()
+        loadData()
+    }
+    
+    private fun setupViews() {
+        // For now, just display basic statistics
+        binding.textPlaceholder.text = "📊 Progress Overview\n\nThis section will show visual charts of your progress.\n\nComing soon:\n• Task completion trends\n• Habit streak charts\n• Goal progress visualizations"
+    }
+    
+    private fun loadData() {
+        val tasks = dataManager.getTasks()
+        val habits = dataManager.getHabits()
+        val goals = dataManager.getGoals()
+        
+        val completedTasks = tasks.count { it.isCompleted }
+        val totalTasks = tasks.size
+        val completionRate = if (totalTasks > 0) (completedTasks * 100 / totalTasks) else 0
+        
+        val totalStreakDays = habits.sumOf { it.currentStreak }
+        val averageGoalProgress = if (goals.isNotEmpty()) goals.map { it.progress }.average().toInt() else 0
+        
+        val statsText = "\n\n📈 Current Statistics:\n\n" +
+                "✅ Tasks Completed: $completedTasks/$totalTasks ($completionRate%)\n" +
+                "⭐ Total Habit Streak Days: $totalStreakDays\n" +
+                "🎯 Average Goal Progress: $averageGoalProgress%"
+        
+        binding.textPlaceholder.text = binding.textPlaceholder.text.toString() + statsText
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        if (::dataManager.isInitialized) {
+            loadData()
         }
     }
-
+    
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

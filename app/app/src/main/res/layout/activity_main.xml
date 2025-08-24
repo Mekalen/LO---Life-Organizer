@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/gradient_primary"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@drawable/gradient_secondary"
             app:titleTextColor="@color/white"
             app:layout_scrollFlags="scroll|enterAlways|snap" />
 
@@ -28,16 +28,102 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="?attr/actionBarSize"
+        android:layout_marginBottom="64dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <!-- Bottom Navigation (Ultra-compatible for Samsung) -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <!-- Responsive Bottom Navigation Bar -->
+    <LinearLayout
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:layout_gravity="bottom"
-        app:itemActiveIndicatorStyle="@style/Theme.App1.BottomNavigationView.ActiveIndicator"
-        app:menu="@menu/bottom_navigation_menu" />
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:elevation="12dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
+        
+        <Button
+            android:id="@+id/nav_dashboard"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/nav_dashboard"
+            android:textColor="@color/primary"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:padding="2dp"
+            style="?android:attr/borderlessButtonStyle" />
+            
+        <Button
+            android:id="@+id/nav_tasks"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/nav_tasks"
+            android:textColor="@color/primary"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:padding="2dp"
+            style="?android:attr/borderlessButtonStyle" />
+            
+        <Button
+            android:id="@+id/nav_habits"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/nav_habits"
+            android:textColor="@color/primary"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:padding="2dp"
+            style="?android:attr/borderlessButtonStyle" />
+            
+        <Button
+            android:id="@+id/nav_goals"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/nav_goals"
+            android:textColor="@color/primary"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:padding="2dp"
+            style="?android:attr/borderlessButtonStyle" />
+            
+        <Button
+            android:id="@+id/nav_graphs"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/nav_graphs"
+            android:textColor="@color/primary"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:padding="2dp"
+            style="?android:attr/borderlessButtonStyle" />
+            
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

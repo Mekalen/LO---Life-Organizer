@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme -->
+    <style name="Theme.LO" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorError">@color/error</item>
+        
+        <!-- Text colors -->
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+        <item name="colorOnBackground">@color/on_background</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorOnError">@color/on_error</item>
+        
+        <!-- Modern elevation and shadows -->
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+    </style>
+    
+    <!-- Modern Typography Styles -->
+    <style name="TextAppearance.LO" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    
+    <style name="TextAppearance.LO.Headline" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="TextAppearance.LO.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="TextAppearance.LO.Body" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+    
+    <style name="TextAppearance.LO.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/text_tertiary</item>
+    </style>
+    
+    <!-- Modern Button Styles -->
+    <style name="Widget.LO.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/button_modern</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+    
+    <style name="Widget.LO.Button.Secondary" parent="Widget.LO.Button">
+        <item name="android:background">@drawable/gradient_secondary</item>
+    </style>
+    
+    <!-- Modern Card Styles -->
+    <style name="Widget.LO.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="strokeColor">@color/primary_light</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+    
+    <style name="Widget.LO.CardView.Highlighted" parent="Widget.LO.CardView">
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardElevation">12dp</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+    
+    <!-- Modern FloatingActionButton -->
+    <style name="Widget.LO.FloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:background">@drawable/fab_ripple</item>
+        <item name="tint">@color/white</item>
+        <item name="elevation">8dp</item>
+        <item name="pressedTranslationZ">12dp</item>
+    </style>
+    
+    
+    <!-- Modern progress bar styles -->
+    <style name="Widget.LO.ProgressBar" parent="Widget.MaterialComponents.LinearProgressIndicator">
+        <item name="indicatorColor">@color/primary</item>
+        <item name="trackColor">@color/primary_light</item>
+        <item name="trackThickness">8dp</item>
+    </style>
+</resources>

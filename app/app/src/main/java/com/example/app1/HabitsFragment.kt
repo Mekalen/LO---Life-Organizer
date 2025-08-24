@@ -14,7 +14,6 @@ import com.example.app1.data.DataManager
 import com.example.app1.databinding.FragmentHabitsBinding
 import com.example.app1.models.Habit
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import java.util.*
 
 class HabitsFragment : Fragment() {
     private var _binding: FragmentHabitsBinding? = null
@@ -39,9 +38,6 @@ class HabitsFragment : Fragment() {
         setupRecyclerView()
         setupClickListeners()
         loadHabits()
-        
-        // Update toolbar title
-        (requireActivity() as MainActivity).updateToolbarTitle("Habits")
     }
     
     private fun setupRecyclerView() {
@@ -52,7 +48,7 @@ class HabitsFragment : Fragment() {
             },
             onHabitTrack = { habit ->
                 dataManager.trackHabit(habit.id)
-                loadHabits()
+                binding.recyclerViewHabits.post { loadHabits() }
             }
         )
         
@@ -147,7 +143,7 @@ class HabitsFragment : Fragment() {
                         frequency = frequency
                     )
                     dataManager.updateHabit(updatedHabit)
-                    loadHabits()
+                    binding.recyclerViewHabits.post { loadHabits() }
                 }
             }
             .setNegativeButton("Cancel", null)
@@ -163,15 +159,10 @@ class HabitsFragment : Fragment() {
             .setMessage("Are you sure you want to delete '${habit.name}'?")
             .setPositiveButton("Delete") { _, _ ->
                 dataManager.deleteHabit(habit.id)
-                loadHabits()
+                binding.recyclerViewHabits.post { loadHabits() }
             }
             .setNegativeButton("Cancel", null)
             .show()
-    }
-    
-    override fun onResume() {
-        super.onResume()
-        loadHabits()
     }
     
     override fun onDestroyView() {

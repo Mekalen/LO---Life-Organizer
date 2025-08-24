@@ -61,10 +61,6 @@ class DashboardFragment : Fragment() {
             updateMoodDisplay()
             Log.d("DashboardFragment", "Mood display updated")
             
-            // Update toolbar title
-            (requireActivity() as MainActivity).updateToolbarTitle("Dashboard")
-            Log.d("DashboardFragment", "Toolbar title updated")
-            
             Log.d("DashboardFragment", "onViewCreated() completed successfully")
         } catch (e: Exception) {
             Log.e("DashboardFragment", "Error in onViewCreated()", e)
@@ -179,6 +175,12 @@ class DashboardFragment : Fragment() {
     private fun showAddTaskDialog() {
         val dialogBinding = layoutInflater.inflate(R.layout.dialog_add_task, null)
         
+        // Cache view references
+        val titleEdit = dialogBinding.findViewById<EditText>(R.id.editTextTitle)
+        val descriptionEdit = dialogBinding.findViewById<EditText>(R.id.editTextDescription)
+        val prioritySpinner = dialogBinding.findViewById<Spinner>(R.id.spinnerPriority)
+        val categorySpinner = dialogBinding.findViewById<Spinner>(R.id.spinnerCategory)
+        
         // Setup priority spinner
         val priorityAdapter = ArrayAdapter(
             requireContext(),
@@ -186,7 +188,6 @@ class DashboardFragment : Fragment() {
             Task.Priority.values().map { it.name.lowercase().replaceFirstChar { char -> char.uppercase() } }
         )
         priorityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        val prioritySpinner = dialogBinding.findViewById<Spinner>(R.id.spinnerPriority)
         prioritySpinner.adapter = priorityAdapter
         
         // Setup category spinner
@@ -196,15 +197,14 @@ class DashboardFragment : Fragment() {
             Task.Category.values().map { it.name.lowercase().replaceFirstChar { char -> char.uppercase() } }
         )
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        val categorySpinner = dialogBinding.findViewById<Spinner>(R.id.spinnerCategory)
         categorySpinner.adapter = categoryAdapter
         
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Add New Task")
             .setView(dialogBinding)
             .setPositiveButton("Add") { _, _ ->
-                val title = dialogBinding.findViewById<EditText>(R.id.editTextTitle).text.toString()
-                val description = dialogBinding.findViewById<EditText>(R.id.editTextDescription).text.toString()
+                val title = titleEdit.text.toString()
+                val description = descriptionEdit.text.toString()
                 val priority = Task.Priority.values()[prioritySpinner.selectedItemPosition]
                 val category = Task.Category.values()[categorySpinner.selectedItemPosition]
                 
@@ -482,7 +482,9 @@ class DashboardFragment : Fragment() {
     
     override fun onResume() {
         super.onResume()
-        loadDashboardData()
+        if (::dataManager.isInitialized) {
+            loadDashboardData()
+        }
     }
     
     override fun onDestroyView() {

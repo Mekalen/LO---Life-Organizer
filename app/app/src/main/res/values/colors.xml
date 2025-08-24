@@ -4,16 +4,28 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     
-    <!-- App Palette (Always Dark: Black + Red accents) -->
-    <color name="primary">#FFB91C1C</color>              <!-- Deep Red primary -->
-    <color name="primary_variant">#FF7F1D1D</color>        <!-- Darker Red -->
-    <color name="secondary">#FF111111</color>             <!-- Near Black -->
-    <color name="secondary_variant">#FF1A1A1A</color>      <!-- Deeper near-black -->
+    <!-- Modern Gradient Palette - Vibrant & Personality-driven -->
+    <color name="primary">#FF6B46C1</color>              <!-- Vibrant Purple -->
+    <color name="primary_variant">#FF9333EA</color>        <!-- Bright Purple -->
+    <color name="primary_light">#FFE0E7FF</color>          <!-- Light Purple -->
+    <color name="secondary">#FF10B981</color>             <!-- Emerald Green -->
+    <color name="secondary_variant">#FF059669</color>      <!-- Dark Emerald -->
+    <color name="accent_orange">#FFF59E0B</color>          <!-- Vibrant Orange -->
+    <color name="accent_pink">#FFEC4899</color>            <!-- Hot Pink -->
+    <color name="accent_cyan">#FF06B6D4</color>            <!-- Bright Cyan -->
     
-    <!-- Background & Surfaces (light theme compatible) -->
-    <color name="background">#FFFFFFFF</color>
-    <color name="surface">#FFF5F5F5</color>
-    <color name="surface_variant">#FFE5E5E5</color>
+    <!-- Modern Backgrounds with Personality -->
+    <color name="background">#FFF8FAFC</color>            <!-- Soft Off-white -->
+    <color name="surface">#FFFFFFFF</color>               <!-- Pure White -->
+    <color name="surface_variant">#FFF1F5F9</color>        <!-- Cool Gray -->
+    
+    <!-- Gradient Colors for Modern Effects -->
+    <color name="gradient_start">#FF667EEA</color>         <!-- Blue Purple -->
+    <color name="gradient_end">#FF764BA2</color>           <!-- Purple -->
+    <color name="gradient_secondary_start">#FF11998E</color> <!-- Teal -->
+    <color name="gradient_secondary_end">#FF38EF7D</color>  <!-- Green -->
+    <color name="gradient_accent_start">#FFFA709A</color>   <!-- Pink -->
+    <color name="gradient_accent_end">#FFFEE140</color>     <!-- Yellow -->
     
     <!-- Accent Colors -->
     <color name="accent_warm">#FFFF8A65</color>
@@ -57,4 +69,17 @@
     <color name="divider">#FF2B2B2B</color>
     <color name="shimmer_base">#FF1E1E1E</color>
     <color name="shimmer_highlight">#FF2A2A2A</color>
+    
+    <!-- Special Effects Colors -->
+    <color name="ripple_effect">#40FFFFFF</color>         <!-- Semi-transparent white for ripples -->
+    <color name="glassmorphism_overlay">#80FFFFFF</color> <!-- Glass effect overlay -->
+    <color name="shadow_light">#10000000</color>          <!-- Light shadow -->
+    <color name="shadow_medium">#20000000</color>         <!-- Medium shadow -->
+    
+    <!-- Additional Mood and Progress Colors -->
+    <color name="mood_excellent">#FF22C55E</color>        <!-- Excellent mood - green -->
+    <color name="mood_good">#FF10B981</color>            <!-- Good mood - emerald -->
+    <color name="mood_neutral">#FFF59E0B</color>          <!-- Neutral mood - orange -->
+    <color name="mood_poor">#FFEF4444</color>            <!-- Poor mood - red -->
+    <color name="mood_terrible">#FFB91C1C</color>         <!-- Terrible mood - dark red -->
 </resources>

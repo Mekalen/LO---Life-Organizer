@@ -1,7 +1,5 @@
 package com.example.app1
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,8 +14,6 @@ import com.example.app1.data.DataManager
 import com.example.app1.databinding.FragmentTasksBinding
 import com.example.app1.models.Task
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import java.text.SimpleDateFormat
-import java.util.*
 
 class TasksFragment : Fragment() {
     private var _binding: FragmentTasksBinding? = null
@@ -25,8 +21,6 @@ class TasksFragment : Fragment() {
     
     private lateinit var dataManager: DataManager
     private lateinit var tasksAdapter: TasksAdapter
-    private val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
-    private val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
     
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,9 +38,6 @@ class TasksFragment : Fragment() {
         setupRecyclerView()
         setupClickListeners()
         loadTasks()
-        
-        // Update toolbar title
-        (requireActivity() as MainActivity).updateToolbarTitle("Tasks")
     }
     
     private fun setupRecyclerView() {

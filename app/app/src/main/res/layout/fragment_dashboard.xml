@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@drawable/gradient_primary">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,11 +25,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/dashboard_title"
-                android:textSize="24sp"
+                android:textSize="28sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="32dp"
                 android:gravity="center"
-                android:textColor="@color/text_primary" />
+                android:textColor="@color/white"
+                android:shadowColor="@color/black"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="3" />
 
             <!-- Stats Cards Row -->
             <LinearLayout
@@ -45,11 +49,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginEnd="8dp"
-                    app:cardElevation="4dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardBackgroundColor="@color/card_background"
-                    app:strokeColor="@color/card_stroke"
-                    app:strokeWidth="1dp">
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="20dp"
+                    android:background="@drawable/card_modern"
+                    app:cardBackgroundColor="@color/white"
+                    app:strokeColor="@color/primary_light"
+                    app:strokeWidth="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -62,18 +67,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/today_tasks"
-                            android:textSize="14sp"
-                            android:textColor="@color/text_secondary" />
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/primary" />
 
                         <TextView
                             android:id="@+id/textTasksProgress"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0/0 completed"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:textStyle="bold"
-                            android:layout_marginTop="8dp"
-                            android:textColor="@color/text_primary" />
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/black" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -84,11 +90,12 @@
                     android:layout_weight="1"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="4dp"
-                    app:cardElevation="4dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardBackgroundColor="@color/card_background"
-                    app:strokeColor="@color/card_stroke"
-                    app:strokeWidth="1dp">
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="20dp"
+                    android:background="@drawable/card_modern"
+                    app:cardBackgroundColor="@color/white"
+                    app:strokeColor="@color/primary"
+                    app:strokeWidth="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -101,18 +108,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/habit_streak"
-                            android:textSize="14sp"
-                            android:textColor="@color/text_secondary" />
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/secondary" />
 
                         <TextView
                             android:id="@+id/textHabitStreak"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Avg: 0 days"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:textStyle="bold"
-                            android:layout_marginTop="8dp"
-                            android:textColor="@color/text_primary" />
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/black" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -122,11 +130,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
-                    app:cardElevation="4dp"
-                    app:cardCornerRadius="16dp"
-                    app:cardBackgroundColor="@color/card_background"
-                    app:strokeColor="@color/card_stroke"
-                    app:strokeWidth="1dp">
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="20dp"
+                    android:background="@drawable/card_modern"
+                    app:cardBackgroundColor="@color/white"
+                    app:strokeColor="@color/accent_orange"
+                    app:strokeWidth="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -139,18 +148,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/goal_progress"
-                            android:textSize="14sp"
-                            android:textColor="@color/text_secondary" />
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/accent_orange" />
 
                         <TextView
                             android:id="@+id/textGoalProgress"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Avg: 0%"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:textStyle="bold"
-                            android:layout_marginTop="8dp"
-                            android:textColor="@color/text_primary" />
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/black" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
@@ -220,19 +230,24 @@
                     android:text="@string/today_tasks"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
+                    android:textColor="@color/white"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2" />
                     
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/buttonAddTaskFromDashboard"
-                    style="@style/Widget.Material3.Button.TextButton"
+                    style="@style/Widget.Material3.Button.UnelevatedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Task"
-                    android:textSize="14sp"
-                    android:textColor="@color/primary"
+                    android:text="@string/add_task_encouraging"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_modern"
                     app:icon="@android:drawable/ic_input_add"
-                    app:iconSize="20dp"
-                    app:iconTint="@color/primary" />
+                    app:iconSize="18dp"
+                    app:iconTint="@color/white" />
                     
             </LinearLayout>
 
@@ -262,19 +277,24 @@
                     android:text="@string/habits_title"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
+                    android:textColor="@color/white"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2" />
                     
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/buttonAddHabitFromDashboard"
-                    style="@style/Widget.Material3.Button.TextButton"
+                    style="@style/Widget.Material3.Button.UnelevatedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Habit"
-                    android:textSize="14sp"
-                    android:textColor="@color/primary"
+                    android:text="@string/add_habit_encouraging"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_modern"
                     app:icon="@android:drawable/ic_input_add"
-                    app:iconSize="20dp"
-                    app:iconTint="@color/primary" />
+                    app:iconSize="18dp"
+                    app:iconTint="@color/white" />
                     
             </LinearLayout>
 
@@ -304,19 +324,24 @@
                     android:text="@string/goals_title"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:textColor="@color/text_primary" />
+                    android:textColor="@color/white"
+                    android:shadowColor="@color/black"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="2" />
                     
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/buttonAddGoalFromDashboard"
-                    style="@style/Widget.Material3.Button.TextButton"
+                    style="@style/Widget.Material3.Button.UnelevatedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Goal"
-                    android:textSize="14sp"
-                    android:textColor="@color/primary"
+                    android:text="@string/add_goal_encouraging"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_modern"
                     app:icon="@android:drawable/ic_input_add"
-                    app:iconSize="20dp"
-                    app:iconTint="@color/primary" />
+                    app:iconSize="18dp"
+                    app:iconTint="@color/white" />
                     
             </LinearLayout>
 

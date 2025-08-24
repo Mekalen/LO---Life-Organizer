@@ -12,15 +12,14 @@ import com.example.app1.data.DataManager
 import com.example.app1.databinding.FragmentGoalsBinding
 import com.example.app1.models.Goal
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import java.util.*
 
 class GoalsFragment : Fragment() {
     private var _binding: FragmentGoalsBinding? = null
     private val binding get() = _binding!!
-    
+
     private lateinit var dataManager: DataManager
     private lateinit var goalsAdapter: GoalsAdapter
-    
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,18 +36,12 @@ class GoalsFragment : Fragment() {
         setupRecyclerView()
         setupClickListeners()
         loadGoals()
-        
-        // Update toolbar title
-        (requireActivity() as MainActivity).updateToolbarTitle("Goals")
     }
     
     private fun setupRecyclerView() {
-        goalsAdapter = GoalsAdapter(
-            emptyList(),
-            onGoalClick = { goal ->
-                showEditGoalDialog(goal)
-            }
-        )
+        goalsAdapter = GoalsAdapter(emptyList()) { goal ->
+            showEditGoalDialog(goal)
+        }
         
         binding.recyclerViewGoals.apply {
             layoutManager = LinearLayoutManager(context)
@@ -133,7 +126,7 @@ class GoalsFragment : Fragment() {
                         progress = calculateProgress(currentValue, targetValue)
                     )
                     dataManager.updateGoal(updatedGoal)
-                    loadGoals()
+                    binding.recyclerViewGoals.post { loadGoals() }
                 }
             }
             .setNegativeButton("Cancel", null)
@@ -149,7 +142,7 @@ class GoalsFragment : Fragment() {
             .setMessage("Are you sure you want to delete '${goal.title}'?")
             .setPositiveButton("Delete") { _, _ ->
                 dataManager.deleteGoal(goal.id)
-                loadGoals()
+                binding.recyclerViewGoals.post { loadGoals() }
             }
             .setNegativeButton("Cancel", null)
             .show()
@@ -167,11 +160,6 @@ class GoalsFragment : Fragment() {
         } catch (e: Exception) {
             0
         }
-    }
-    
-    override fun onResume() {
-        super.onResume()
-        loadGoals()
     }
     
     override fun onDestroyView() {
